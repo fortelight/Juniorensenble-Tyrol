@@ -1,16 +1,80 @@
-/* ===== 全体 ===== */
+/* =========================
+   カラーテーマ（少し華やか）
+========================= */
+:root {
+  --main: #5b8db8;     /* 落ち着いた青 */
+  --sub: #8fb3a2;      /* ミント */
+  --accent: #e6c87a;   /* 明るめゴールド */
+  --bg: #f4f6f8;
+  --text: #333;
+}
+
+/* =========================
+   全体
+========================= */
 body {
   margin: 0;
   font-family: "Noto Sans JP", "Nunito", sans-serif;
   line-height: 1.8;
-  color: #333;
-  background: #f5f7fa;
+  color: var(--text);
+  background: radial-gradient(
+    circle at top,
+    #ffffff,
+    var(--bg)
+  );
 }
 
+/* =========================
+   ヘッダー（写真あり）
+========================= */
+.site-header {
+  background-image: url("images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: #fff;
+  padding: 4rem 1rem;
+}
+
+.header-overlay {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(91, 141, 184, 0.82),
+    rgba(143, 179, 162, 0.82)
+  );
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 0.05em;
+}
+
+.site-header h1::after {
+  content: "♪";
+  margin-left: 0.3em;
+  color: var(--accent);
+  font-size: 0.9em;
+}
+
+.site-header p {
+  margin: 0.6rem 0 1.6rem;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* =========================
+   ナビゲーション
+========================= */
 .nav {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
@@ -20,128 +84,145 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-/* ===== ヘッダー ===== */
-header {
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
-  color: #fff;
-  text-align: center;
-  padding: 3rem 1rem;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
-header p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  opacity: 0.95;
-}
-/* ===== ヘッダー写真 ===== */
-.site-header {
-  background-image: url("images/header.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-align: center;
-  padding: 4rem 1rem;
+  opacity: 0.9;
   position: relative;
 }
 
-/* 文字を読みやすくする半透明レイヤー */
-.header-overlay {
-  background: rgba(0, 0, 0, 0.45);
-  padding: 2.5rem 1rem;
-  border-radius: 16px;
-  max-width: 900px;
-  margin: 0 auto;
+.nav a:hover {
+  opacity: 1;
 }
 
-/* タイトル調整 */
-.site-header h1 {
-  margin: 0;
-  font-size: 2.4rem;
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.3s;
 }
 
-.site-header p {
-  margin: 0.5rem 0 1.5rem;
-  font-size: 1.1rem;
+.nav a:hover::after {
+  width: 100%;
 }
 
-/* ===== メイン ===== */
+/* =========================
+   メイン
+========================= */
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
 }
 
-
-/* ===== セクション ===== */
+/* =========================
+   セクション
+========================= */
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 section h2 {
+  position: relative;
+  padding-left: 1rem;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-left: 6px solid #4facfe;
-  padding-left: 0.75rem;
+  color: var(--main);
+  margin-bottom: 1.2rem;
 }
 
-/* ===== カード ===== */
+section h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 6px;
+  height: 1.4em;
+  background: linear-gradient(
+    to bottom,
+    var(--main),
+    var(--sub)
+  );
+  border-radius: 3px;
+}
+
+/* =========================
+   カード
+========================= */
 .card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f9fbff
+  );
+  padding: 1.6rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+  border-top: 3px solid var(--sub);
 }
 
-/* ===== リスト ===== */
+/* =========================
+   リスト
+========================= */
 ul {
   padding-left: 1.2rem;
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-/* ===== お問い合わせ ===== */
+/* =========================
+   お問い合わせボタン
+========================= */
 .contact a {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.4rem;
-  background: #4facfe;
-  color: #fff;
+  margin-top: 1.2rem;
+  padding: 0.75rem 1.6rem;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    #f0dd9a
+  );
+  color: #333;
   text-decoration: none;
-  border-radius: 999px;
   font-weight: 500;
-  transition: background 0.3s;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s, opacity 0.2s;
 }
 
 .contact a:hover {
-  background: #3a9de0;
+  transform: translateY(-2px);
+  opacity: 0.95;
 }
 
-/* ===== フッター ===== */
+/* =========================
+   フッター
+========================= */
 footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1.8rem;
   font-size: 0.9rem;
   color: #777;
+  background: #fff;
 }
 
-/* ===== スマホ対応 ===== */
+/* =========================
+   スマホ対応
+========================= */
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
+  .site-header h1 {
+    font-size: 1.9rem;
+  }
+
+  .site-header p {
+    font-size: 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   section h2 {
