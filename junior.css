@@ -1,110 +1,246 @@
-/* ===== 全体 ===== */
-body {
-  margin: 0;
-  font-family: "Noto Sans JP", "Nunito", sans-serif;
-  line-height: 1.8;
-  color: #333;
-  background: #f5f7fa;
+/* ===========================
+   CSS Variables
+=========================== */
+:root {
+  --sky: #4facfe;
+  --sky-deep: #0078d4;
+  --mint: #43e6b5;
+  --warm: #fff8f0;
+  --cream: #fffdf9;
+  --text: #2d3748;
+  --text-sub: #718096;
+  --shadow: 0 8px 32px rgba(79,172,254,0.13);
+  --radius: 18px;
 }
 
+/* ===========================
+   Reset & Base
+=========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   Header
+=========================== */
+header {
+  background: linear-gradient(135deg, #4facfe 0%, #00c6ff 50%, #43e6b5 100%);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "♩ ♪ ♫ ♬ ♩ ♪ ♫ ♬ ♩ ♪ ♫ ♬";
+  position: absolute;
+  top: 12px;
+  left: -20%;
+  right: 0;
+  font-size: 1.3rem;
+  opacity: 0.18;
+  letter-spacing: 2rem;
+  white-space: nowrap;
+  animation: scrollNotes 18s linear infinite;
+  pointer-events: none;
+}
+
+header::after {
+  content: "♬ ♫ ♪ ♩ ♬ ♫ ♪ ♩ ♬ ♫ ♪ ♩";
+  position: absolute;
+  bottom: 12px;
+  left: -20%;
+  right: 0;
+  font-size: 1.1rem;
+  opacity: 0.13;
+  letter-spacing: 2.5rem;
+  white-space: nowrap;
+  animation: scrollNotes 22s linear infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes scrollNotes {
+  from { transform: translateX(0); }
+  to   { transform: translateX(30%); }
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  position: relative;
+}
+
+header p {
+  margin: 0.6rem 0 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  opacity: 0.92;
+  position: relative;
+}
+
+/* ===========================
+   Nav
+=========================== */
 .nav {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 0;
+  margin: 2rem 0 0;
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  position: relative;
 }
 
 .nav a {
   color: #fff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.45);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  display: inline-block;
 }
 
 .nav a:hover {
-  text-decoration: underline;
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-2px);
 }
 
-/* ===== ヘッダー ===== */
-header {
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
-  color: #fff;
-  text-align: center;
-  padding: 3rem 1rem;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
-header p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  opacity: 0.95;
-}
-/* ===== ヘッダー写真 ===== */
-.site-header {
-  background-image: url("images/header.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-align: center;
-  padding: 4rem 1rem;
-  position: relative;
-}
-
-/* 文字を読みやすくする半透明レイヤー */
-.header-overlay {
-  background: rgba(0, 0, 0, 0.45);
-  padding: 2.5rem 1rem;
-  border-radius: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* タイトル調整 */
-.site-header h1 {
-  margin: 0;
-  font-size: 2.4rem;
-}
-
-.site-header p {
-  margin: 0.5rem 0 1.5rem;
-  font-size: 1.1rem;
-}
-
-/* ===== メイン ===== */
+/* ===========================
+   Main
+=========================== */
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1.2rem 4rem;
 }
 
-
-/* ===== セクション ===== */
+/* ===========================
+   Section
+=========================== */
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.22s; }
+section:nth-child(3) { animation-delay: 0.34s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-left: 6px solid #4facfe;
-  padding-left: 0.75rem;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--sky-deep);
 }
 
-/* ===== カード ===== */
+section h2::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 1.3em;
+  background: linear-gradient(to bottom, var(--sky), var(--mint));
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   Card
+=========================== */
 .card {
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(79,172,254,0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
 }
 
-/* ===== リスト ===== */
+.card:hover {
+  box-shadow: 0 12px 40px rgba(79,172,254,0.2);
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   活動内容リスト
+=========================== */
+.activities .card ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activities .card li {
+  background: var(--warm);
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  border-left: 5px solid var(--sky);
+  margin: 0;
+  font-size: 0.97rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.activities .card li::before {
+  content: "♪";
+  color: var(--sky);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   お問い合わせ ボタン
+=========================== */
+.contact a {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.75rem 1.8rem;
+  background: linear-gradient(135deg, var(--sky), var(--mint));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 16px rgba(79,172,254,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact a:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(79,172,254,0.45);
+}
+
+/* ===========================
+   汎用 ul/li
+=========================== */
 ul {
   padding-left: 1.2rem;
 }
@@ -113,39 +249,44 @@ li {
   margin-bottom: 0.5rem;
 }
 
-/* ===== お問い合わせ ===== */
-.contact a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.4rem;
-  background: #4facfe;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-
-.contact a:hover {
-  background: #3a9de0;
-}
-
-/* ===== フッター ===== */
+/* ===========================
+   Footer
+=========================== */
 footer {
   text-align: center;
-  padding: 1.5rem;
-  font-size: 0.9rem;
-  color: #777;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  border-top: 1px solid rgba(79,172,254,0.12);
+  background: #fff;
 }
 
-/* ===== スマホ対応 ===== */
+footer::before {
+  content: "♫  ";
+  color: var(--sky);
+  opacity: 0.5;
+}
+
+footer::after {
+  content: "  ♫";
+  color: var(--sky);
+  opacity: 0.5;
+}
+
+/* ===========================
+   Responsive
+=========================== */
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
+  header {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .card {
+    padding: 1.3rem 1.2rem;
   }
 
   section h2 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 }
 
