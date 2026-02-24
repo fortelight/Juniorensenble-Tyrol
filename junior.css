@@ -290,4 +290,27 @@ footer::after {
   }
 }
 
+/*============
+  Picture
+  ==========*/
+.instructor-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
+.instructor-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid var(--sky);
+}
+
+@media (max-width: 600px) {
+  .instructor-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
