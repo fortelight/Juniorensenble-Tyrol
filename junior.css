@@ -33,12 +33,24 @@ body {
    Header
 =========================== */
 header {
-  background: linear-gradient(135deg, #4facfe 0%, #00c6ff 50%, #43e6b5 100%);
+  background-image: url("images/mountains.png");
+  background-size: cover;
+  background-position: center;
   color: #fff;
   text-align: center;
-  padding: 4rem 1.5rem 3rem;
+  padding: 0;
   position: relative;
   overflow: hidden;
+}
+
+header::before,
+header::after {
+  display: none; /* 音符アニメーションを非表示に */
+}
+
+.header-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4rem 1.5rem 3rem;
 }
 
 header::before {
@@ -314,3 +326,4 @@ footer::after {
     text-align: center;
   }
 }
+
